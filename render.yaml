@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: shopmate-backend
+    env: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        value: https://your-vercel-frontend.vercel.app # Update this with your actual Vercel URL later
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false # Render will prompt you to enter your MongoDB Atlas URI during setup
